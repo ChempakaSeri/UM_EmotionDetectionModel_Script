@@ -1,0 +1,81 @@
+Word2Vec CNN model built: 
+Model: "Word2Vec_CNN"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 700, 300)          2400000   
+                                                                 
+ conv1d (Conv1D)             (None, 700, 250)          225250    
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 14, 250)          0         
+ )                                                               
+                                                                 
+ conv1d_1 (Conv1D)           (None, 14, 250)           125250    
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 1, 250)           0         
+ 1D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 250)               0         
+                                                                 
+ dense (Dense)               (None, 250)               62750     
+                                                                 
+ dense_1 (Dense)             (None, 7)                 1757      
+                                                                 
+=================================================================
+Total params: 2,815,007
+Trainable params: 415,007
+Non-trainable params: 2,400,000
+_________________________________________________________________
+WARNING:tensorflow:`write_grads` will be ignored in TensorFlow 2.0 for the `TensorBoard` Callback.
+WARNING:tensorflow:`batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+Training the Word2Vec CNN model
+2023-01-03 15:36:14.306924: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+Epoch 1/6
+2023-01-03 15:36:14.609081: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:36:18.404450: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+
+Epoch 1: val_accuracy improved from -inf to 0.56619, saving model to Models/word2vec_cnn.hdf5
+39/39 - 5s - loss: 1.4928 - accuracy: 0.4320 - val_loss: 1.1579 - val_accuracy: 0.5662 - 5s/epoch - 127ms/step
+Epoch 2/6
+
+Epoch 2: val_accuracy improved from 0.56619 to 0.58714, saving model to Models/word2vec_cnn.hdf5
+39/39 - 4s - loss: 0.8955 - accuracy: 0.6827 - val_loss: 1.1022 - val_accuracy: 0.5871 - 4s/epoch - 96ms/step
+Epoch 3/6
+
+Epoch 3: val_accuracy improved from 0.58714 to 0.59143, saving model to Models/word2vec_cnn.hdf5
+39/39 - 4s - loss: 0.5447 - accuracy: 0.8308 - val_loss: 1.3085 - val_accuracy: 0.5914 - 4s/epoch - 95ms/step
+Epoch 4/6
+
+Epoch 4: val_accuracy improved from 0.59143 to 0.60238, saving model to Models/word2vec_cnn.hdf5
+39/39 - 4s - loss: 0.3511 - accuracy: 0.8943 - val_loss: 1.2866 - val_accuracy: 0.6024 - 4s/epoch - 94ms/step
+Epoch 5/6
+
+Epoch 5: val_accuracy did not improve from 0.60238
+39/39 - 4s - loss: 0.2748 - accuracy: 0.9147 - val_loss: 1.4091 - val_accuracy: 0.5871 - 4s/epoch - 94ms/step
+Epoch 6/6
+
+Epoch 6: val_accuracy improved from 0.60238 to 0.61667, saving model to Models/word2vec_cnn.hdf5
+39/39 - 4s - loss: 0.2759 - accuracy: 0.9222 - val_loss: 1.2191 - val_accuracy: 0.6167 - 4s/epoch - 94ms/step
+
+Predicting the model
+2023-01-03 15:36:37.981450: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+17/17 [==============================] - 1s 43ms/step - loss: 1.2191 - accuracy: 0.6167
+loss: 1.2190638780593872
+accuracy: 0.6166666746139526
+
+Confusion Matrix
+2023-01-03 15:36:38.860005: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+66/66 [==============================] - 1s 12ms/step
+[[174   2  27  21  52  19   6]
+ [  0 284   0   2   2   7   0]
+ [ 10   2 200  17  56  14   2]
+ [  6   2  54 137  77  19   3]
+ [ 10   3  37  18 150  94   0]
+ [  8   0  23   1 112 167   2]
+ [ 18   5  10  18  33  13 183]]
+
+Weighted Accuracy: 0.6166666666666667
+Weighted precision: 0.6622209295032921
+Weighted recall: 0.6166666666666667
+Weighted f-measure: 0.6287967406199756

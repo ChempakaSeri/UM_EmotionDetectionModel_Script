@@ -1,0 +1,90 @@
+Word2Vec CNN+LSTM model built: 
+Model: "Word2Vec_CNN_LSTM"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 500, 300)          2400000   
+                                                                 
+ conv1d (Conv1D)             (None, 500, 250)          225250    
+                                                                 
+ max_pooling1d (MaxPooling1D  (None, 166, 250)         0         
+ )                                                               
+                                                                 
+ conv1d_1 (Conv1D)           (None, 166, 250)          125250    
+                                                                 
+ max_pooling1d_1 (MaxPooling  (None, 55, 250)          0         
+ 1D)                                                             
+                                                                 
+ lstm (LSTM)                 (None, 250)               501000    
+                                                                 
+ flatten (Flatten)           (None, 250)               0         
+                                                                 
+ dense (Dense)               (None, 250)               62750     
+                                                                 
+ dense_1 (Dense)             (None, 7)                 1757      
+                                                                 
+=================================================================
+Total params: 3,316,007
+Trainable params: 916,007
+Non-trainable params: 2,400,000
+_________________________________________________________________
+WARNING:tensorflow:`write_grads` will be ignored in TensorFlow 2.0 for the `TensorBoard` Callback.
+WARNING:tensorflow:`batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+Training the Word2Vec CNN+LSTM model
+2023-01-03 15:42:05.087263: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+Epoch 1/6
+2023-01-03 15:42:06.099580: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:06.308073: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:06.701227: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:11.028144: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:11.111249: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+
+Epoch 1: val_accuracy improved from -inf to 0.14333, saving model to Models/word2vec_cnn_lstm.hdf5
+39/39 - 7s - loss: 1.9466 - accuracy: 0.1441 - val_loss: 1.9460 - val_accuracy: 0.1433 - 7s/epoch - 180ms/step
+Epoch 2/6
+
+Epoch 2: val_accuracy improved from 0.14333 to 0.26238, saving model to Models/word2vec_cnn_lstm.hdf5
+39/39 - 4s - loss: 1.9436 - accuracy: 0.1537 - val_loss: 1.8052 - val_accuracy: 0.2624 - 4s/epoch - 111ms/step
+Epoch 3/6
+
+Epoch 3: val_accuracy improved from 0.26238 to 0.27714, saving model to Models/word2vec_cnn_lstm.hdf5
+39/39 - 4s - loss: 1.7435 - accuracy: 0.2692 - val_loss: 1.7382 - val_accuracy: 0.2771 - 4s/epoch - 110ms/step
+Epoch 4/6
+
+Epoch 4: val_accuracy improved from 0.27714 to 0.30762, saving model to Models/word2vec_cnn_lstm.hdf5
+39/39 - 4s - loss: 1.6597 - accuracy: 0.2822 - val_loss: 1.6596 - val_accuracy: 0.3076 - 4s/epoch - 110ms/step
+Epoch 5/6
+
+Epoch 5: val_accuracy improved from 0.30762 to 0.39095, saving model to Models/word2vec_cnn_lstm.hdf5
+39/39 - 4s - loss: 1.4764 - accuracy: 0.3757 - val_loss: 1.5206 - val_accuracy: 0.3910 - 4s/epoch - 110ms/step
+Epoch 6/6
+
+Epoch 6: val_accuracy did not improve from 0.39095
+39/39 - 4s - loss: 1.3537 - accuracy: 0.4069 - val_loss: 1.4387 - val_accuracy: 0.3867 - 4s/epoch - 109ms/step
+
+Predicting the model
+2023-01-03 15:42:34.151725: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:34.235313: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+17/17 [==============================] - 1s 48ms/step - loss: 1.5206 - accuracy: 0.3910
+loss: 1.5206477642059326
+accuracy: 0.39095237851142883
+
+Confusion Matrix
+2023-01-03 15:42:35.362508: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:42:35.433631: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+66/66 [==============================] - 1s 16ms/step
+[[  2   4  75   2 201   0  17]
+ [  0 282   6   0   6   0   1]
+ [  1   3 117   0 172   0   8]
+ [  1   4  77   0 200   0  16]
+ [  2   7 104   0 194   0   5]
+ [  0   5 108   0 190   0  10]
+ [  2   6   1   2  43   0 226]]
+
+Weighted Accuracy: 0.39095238095238094
+/opt/homebrew/Caskroom/miniforge/base/envs/metal/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Weighted precision: 0.3327043730076011
+Weighted recall: 0.39095238095238094
+Weighted f-measure: 0.32588802362212055

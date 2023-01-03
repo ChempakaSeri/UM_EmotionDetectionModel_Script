@@ -1,0 +1,80 @@
+Word2Seq LSTM model built: 
+Model: "Word2Seq_LSTM"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 700, 250)          2000000   
+                                                                 
+ lstm (LSTM)                 (None, 250)               501000    
+                                                                 
+ flatten (Flatten)           (None, 250)               0         
+                                                                 
+ dense (Dense)               (None, 250)               62750     
+                                                                 
+ dense_1 (Dense)             (None, 7)                 1757      
+                                                                 
+=================================================================
+Total params: 2,565,507
+Trainable params: 2,565,507
+Non-trainable params: 0
+_________________________________________________________________
+WARNING:tensorflow:`write_grads` will be ignored in TensorFlow 2.0 for the `TensorBoard` Callback.
+WARNING:tensorflow:`batch_size` is no longer needed in the `TensorBoard` Callback and will be ignored in TensorFlow 2.0.
+WARNING:tensorflow:`period` argument is deprecated. Please use `save_freq` to specify the frequency in number of batches seen.
+Training the Word2Seq CNN model
+2023-01-03 15:27:56.506832: W tensorflow/core/platform/profile_utils/cpu_utils.cc:128] Failed to get CPU frequency: 0 Hz
+Epoch 1/6
+2023-01-03 15:27:57.375581: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:27:57.554437: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:27:59.721103: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:28:34.750886: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:28:34.820853: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+
+Epoch 1: val_accuracy improved from -inf to 0.14333, saving model to Models/word2seq_lstm.hdf5
+39/39 - 44s - loss: 1.9476 - accuracy: 0.1422 - val_loss: 1.9460 - val_accuracy: 0.1433 - 44s/epoch - 1s/step
+Epoch 2/6
+
+Epoch 2: val_accuracy did not improve from 0.14333
+39/39 - 28s - loss: 1.9467 - accuracy: 0.1376 - val_loss: 1.9465 - val_accuracy: 0.1333 - 28s/epoch - 709ms/step
+Epoch 3/6
+
+Epoch 3: val_accuracy did not improve from 0.14333
+39/39 - 28s - loss: 1.9467 - accuracy: 0.1371 - val_loss: 1.9471 - val_accuracy: 0.1333 - 28s/epoch - 714ms/step
+Epoch 4/6
+
+Epoch 4: val_accuracy did not improve from 0.14333
+39/39 - 28s - loss: 1.9484 - accuracy: 0.1429 - val_loss: 1.9471 - val_accuracy: 0.1333 - 28s/epoch - 714ms/step
+Epoch 5/6
+
+Epoch 5: val_accuracy did not improve from 0.14333
+39/39 - 27s - loss: 1.9464 - accuracy: 0.1463 - val_loss: 1.9469 - val_accuracy: 0.1333 - 27s/epoch - 705ms/step
+Epoch 6/6
+
+Epoch 6: val_accuracy did not improve from 0.14333
+39/39 - 27s - loss: 1.9464 - accuracy: 0.1445 - val_loss: 1.9465 - val_accuracy: 0.1333 - 27s/epoch - 698ms/step
+
+Predicting the model
+2023-01-03 15:30:59.284703: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:30:59.354584: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+17/17 [==============================] - 6s 241ms/step - loss: 1.9460 - accuracy: 0.1433
+loss: 1.9459818601608276
+accuracy: 0.1433333307504654
+
+Confusion Matrix
+2023-01-03 15:31:05.061634: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+2023-01-03 15:31:05.117290: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:114] Plugin optimizer for device_type GPU is enabled.
+66/66 [==============================] - 11s 146ms/step
+[[301   0   0   0   0   0   0]
+ [295   0   0   0   0   0   0]
+ [301   0   0   0   0   0   0]
+ [298   0   0   0   0   0   0]
+ [312   0   0   0   0   0   0]
+ [313   0   0   0   0   0   0]
+ [280   0   0   0   0   0   0]]
+
+Weighted Accuracy: 0.14333333333333334
+/opt/homebrew/Caskroom/miniforge/base/envs/metal/lib/python3.9/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Weighted precision: 0.020544444444444445
+Weighted recall: 0.14333333333333334
+Weighted f-measure: 0.03593780369290574
