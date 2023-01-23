@@ -141,7 +141,7 @@ embedding_layer = Embedding(
     trainable=False,
 )
 
-model = Sequential(name="Word2Vec_CNN + Bi-RNN + Bi-LSTM")
+model = Sequential(name="Word2Vec_CNN_BiRNN_BiLSTM")
 
 model.add(embedding_layer)
 model.add(Conv1D(filters=250, kernel_size=3, padding="same", activation="relu"))
